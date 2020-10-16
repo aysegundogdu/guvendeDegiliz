@@ -1,55 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+        <script type="text/javascript" src="Scripts/jquery-1.10.2.js">
+        $(document).ready(function () {
+            $("*").click(function () {
+                $("p").hide();
+            });
+        });
+        </script>
+    </head>
 
-<!doctype html>
-<html lang="tr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>İstanbul Sözleşmesi Profil Resmi Güncelle</title>
-	<meta name="csrf-token" content="UW8VVS1I4TuOiPWGrxEwIxuxYImfuUvYRExPSKJt">
-	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css?family=Nunito:400,600" rel="stylesheet">
-	<link rel="shortcut icon" type="image/png" href="https://profilfotosu.istanbulsozlesmesiyasatir.com/assets/img/fav-icon.png"/>
-	<link href="/assets/css/app.css?id=b11824064bcc0fa0158a" rel="stylesheet">
-</head>
-<body>
+    <script type="text/javascript">
+        document.onclick = function (e) {
+            e = e || window.event;
+            var element = e.target || e.srcElement;
+            if (element.innerHTML == "Image") {
+                //someFunction(element.href);
+                var name = element.nameProp;
+                var address = element.href;
+                saveImageAs1(element.nameProp, element.href);
+                return false; // Prevent default action and stop event propagation
+            }
+            else
+                return true;
+        };
 
-	<div class="container my-5 text-center">
-		<div class="row row-cols-1">
-			<div class="col">
-				<h1>İstanbul Sözleşmesi Yaşatır</h1>
-				<h4>Profil Resim Güncelle</h4>
-			</div>
-			<div class="col pb-5 mt-5">
-				<div id="croppic"></div>
-			</div>
-			<div class="col pt-3">
-				<button role="button" type="button" class="btn btn-primary" id="upload-image">Profil Resminizi Oluşturmak İçin Tıklayın
-				</button>
-			</div>
-			<div class="col pt-3 mt-5">
-				<p>
-					<a href="http://kadincinayetlerinidurduracagiz.net/" target="_blank">Kadın Cinayetlerini Durduracağız Platformu</a>
-				</p>
-				<p>
-					<a href="https://www.tck103kadinplatformu.net/" target="_blank">TCK103 Çocuk Cinsel İstismarı Affına Karşı Kadın Platformu</a>
-				</p>
-				<p>
-					<a href="https://istanbulsozlesmesiyasatir.com" target="_blank">İstanbul Sözleşmesi Yaşatır</a>
-				</p>
-			</div>
-			<div class="col pt-3 mt-5">
-				<a href="https://twitter.com/search?q=%23istanbulsozlesmesiyasatir&src=typeahead_click" class="twitlink" target="_blank">#İstanbulSözleşmesiYaşatır</a>
-				<a href="https://twitter.com/search?q=%23istanbulsozlesmesi&src=typeahead_click" class="twitlink" target="_blank">#İstanbulSözleşmesi</a>
-			</div>
-			<div class="my-5 text-center" >
-				<a href="https://github.com/aertas/istanbul-sozlesmesi-yasatir" target="_blank" class="git" title="Fork me on github">GitHub</a>
-			</div>
-		</div>
-	</div>
+        function saveImageAs1(name, adress) {
+            if (confirm('you wanna save this image?')) {
+                window.win = open(adress);
+                //response.redirect("~/testpage.html");
+                setTimeout('win.document.execCommand("SaveAs")', 100);
+                setTimeout('win.close()', 500);
+            }
+        }
+    </script>
 
-
-<script src="/assets/js/app.js?id=c6002cc52d85b2bf6f19"></script>
-<script src="/assets/js/vendor.js?id=1a61e41d7d2f6373072a"></script>
-<script src="/assets/js/site.js?id=b82daf2367179d16859b"></script>
-</body>
+    <body>
+        <form id="form1" runat="server">
+            <div>
+                <p>
+                    <a href="http://localhost:55298/SaveImage/demo/Sample2.xlsx" target="_blank">Excel</a><br />
+                    <a href="http://localhost:55298/SaveImage/demo/abc.jpg" id="abc">Image</a>
+                </p>
+            </div>
+        </form>
+    </body>
 </html>
